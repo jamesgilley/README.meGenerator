@@ -1,4 +1,3 @@
-// array of questions for user
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
@@ -53,6 +52,16 @@ const promptUser = () =>
       name: 'repoContributing',
       message: 'What does the user need to know about contributing to the repo?',
     },
+    {
+      type: 'input',
+      name: 'questions',
+      message: 'Common Questions?',
+    },
+    {
+      type: 'input',
+      name: 'install',
+      message: 'Installation instructions.',
+    },
   ]);
 
 const generateMD = (answers) =>
@@ -66,6 +75,8 @@ const generateMD = (answers) =>
 * [Test Commands](#test-commands)
 * [Repo Use](#repo-use)
 * [Contributing](#contributing)
+* [Questions](#questions)
+* [Installation](#installation)
 
 
 ## Username
@@ -94,6 +105,12 @@ ${answers.repoUse}
 
 ## Contributing
 ${answers.repoContributing}
+
+## Questions
+${answers.questions}
+
+## Installation
+${answers.installation}
     
   `;
 
@@ -101,14 +118,3 @@ promptUser()
   .then((answers) => writeFileAsync('readme.md', generateMD(answers)))
   .then(() => console.log('Successfully wrote to readme.md'))
   .catch((err) => console.error(err));
-  // function to write README file
-function writeToFile(fileName, data) {
-}
-
-// function to initialize program
-function init() {
-
-}
-
-// function call to initialize program
-init();
