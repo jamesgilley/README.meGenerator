@@ -28,9 +28,10 @@ const promptUser = () =>
       message: 'Please write a short description of your project?',
     },
     {
-      type: 'input',
+      type: 'list',
       name: 'license',
       message: 'What kind of license should your project have?',
+      choices: ["Proprietary", "GNU", "MIT"],
     },
     {
       type: 'input',
@@ -54,38 +55,52 @@ const promptUser = () =>
     },
   ]);
 
-const generateHTML = (answers) =>
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>Document</title>
-</head>
-<body>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Your username is ${answers.username}</h1>
-    <p class="lead"> Your email is ${answers.email}.</p>
-      <p class="list-group-item">Your Project Name is ${answers.projectName}</p>
-      <p class="list-group-item">Description: ${answers.description}</p>
-      <p class="list-group-item">License: ${answers.license}</p>
-      <p class="list-group-item">DependencyCommands: ${answers.dependencyCommands}</p>
-      <p class="list-group-item">Test Commands: ${answers.testCommands}</p>
-      <p class="list-group-item">Repo Use: ${answers.repoUse}</p>
-      <p class="list-group-item">Repo Contributing: ${answers.repoContributing}</p>
+const generateMD = (answers) =>
+  `
+## Table of contents
+* [Username](#username)
+* [Email](#email)
+* [Project Name](#project-name)
+* [Description](#license)
+* [Dependency Commands](#dependency-commands)
+* [Test Commands](#test-commands)
+* [Repo Use](#repo-use)
+* [Contributing](#contributing)
+
+
+## Username
+${answers.username}
+
+## Email
+${answers.email}
+
+## Project Name
+${answers.projectName}
+
+## Description
+${answers.description}
+
+## License
+${answers.license}
+
+## Dependency Commands
+${answers.dependencyCommands}
     
-  </div>
-</div>
-</body>
-</html>`;
+## Test Commands
+${answers.testCommands}
+    
+## Repo Use
+${answers.repoUse}
+
+## Contributing
+${answers.repoContributing}
+    
+  `;
 
 promptUser()
-  .then((answers) => writeFileAsync('index.html', generateHTML(answers)))
-  .then(() => console.log('Successfully wrote to index.html'))
+  .then((answers) => writeFileAsync('readme.md', generateMD(answers)))
+  .then(() => console.log('Successfully wrote to readme.md'))
   .catch((err) => console.error(err));
-
   // function to write README file
 function writeToFile(fileName, data) {
 }
