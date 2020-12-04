@@ -8,33 +8,41 @@
 * [Test Commands](#test-commands)
 * [Repo Use](#repo-use)
 * [Contributing](#contributing)
+* [Questions](#questions)
+* [Installation](#installation)
 
 
 ## Username
-t
+jamesgilley
 
 ## Email
-t
+jsmesgilley1@icloud.com
 
 ## Project Name
-t
+README.mdGenerator
 
 ## Description
-t
+this is to generate a simple readme.md
 
 ## License
-Proprietary
+MIT
 
 ## Dependency Commands
-t
+none
     
 ## Test Commands
-t
+npm i
     
 ## Repo Use
-t
+any of your choice
 
 ## Contributing
-t
+how to use forking
+
+## Questions
+how to run app
+
+## Installation
+undefined
     
   
