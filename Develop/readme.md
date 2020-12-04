@@ -23,7 +23,7 @@ t
 t
 
 ## License
-MIT
+Proprietary
 
 ## Dependency Commands
 t
